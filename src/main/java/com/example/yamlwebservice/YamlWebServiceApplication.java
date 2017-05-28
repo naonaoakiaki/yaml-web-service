@@ -12,25 +12,17 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class YamlWebServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(YamlWebServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(YamlWebServiceApplication.class, args);
+    }
 
-	private Human human;
-
-	@RequestMapping("/makeyaml")
-	public ModelAndView index() {
-		ModelAndView mav = new ModelAndView();
-        mav.addObject("name", "taro");
-        mav.addObject("age", "16");
-        mav.addObject("sex", "men");
-		mav.setViewName("makeyaml"); //view名の指定
-		return mav;
-	}
-
-//	@RequestMapping(value = "/makeyaml")
-//	public String index(@ModelAttribute Human human) {
-//		this.human = human;
-//		return human.getName();
-//	}
+    @RequestMapping("/makeyaml")
+    public ModelAndView index(@ModelAttribute Human human) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("name", human.getName());
+        mav.addObject("age", human.getAge());
+        mav.addObject("gender", human.getGender());
+        mav.setViewName("makeyaml"); //view名の指定
+        return mav;
+    }
 }

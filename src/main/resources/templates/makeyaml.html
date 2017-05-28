@@ -5,8 +5,21 @@
     <title>Make YAML</title>
 </head>
 <body>
+<h1>form</h1>
+<form method="post" action="/makeyaml">
+    name：<input type="text" name="name"><br>
+    age：<input type="text" name="age"><br>
+    gender : <select name="gender" required>
+        <option th:each="t : ${T(com.example.yamlwebservice.entity.Gender).values()}"
+                th:value="${t.toString()}"
+                th:text="${t.toString()}">
+        </option>
+    </select>
+    <input type="submit">
+</form>
+<h1>display</h1>
     <div th:text="'name : ' + ${name} + '.'"></div>
     <div th:text="'age : ' + ${age} + '.'"></div>
-    <div th:text="'sex : ' + ${sex} + '.'"></div>
+    <div th:text="'gender : ' + ${gender} + '.'"></div>
 </body>
 </html>
